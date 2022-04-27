@@ -42,7 +42,7 @@ export const SignUpPage = () => {
           />
         </div>
         <button type="submit" className="login-form-btn">
-          Login
+          Sign Up
         </button>
         <span className="register-text">
           Already have an account?{" "}
