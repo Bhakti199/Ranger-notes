@@ -1,8 +1,9 @@
 .home-page {
+  margin-top: 3rem;
   position: relative;
   width: 100vw;
-  height: 100vh;
-  background-color: var(--bg-color-home);
+  height: 91vh;
+  background-color: var(--bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +11,7 @@
 .landing-img {
   position: relative;
   width: 30%;
-  height: 90%;
+  height: 85%;
   border: 1rem solid var(--pink-color);
   padding: 10px;
 }
@@ -46,8 +47,12 @@
 }
 .cta-button:hover {
   transform: scale(1.07);
+  background-color: var(--dark-pink);
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1050px) {
+  .home-page {
+    margin-top: 4rem;
+  }
   .landing-img {
     width: 60%;
   }
