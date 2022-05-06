@@ -1,20 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+:root {
+  --bg-color: rgb(234, 245, 234);
+  --bg-color-pink: rgb(250, 246, 230);
+  --pink-color: rgb(235, 199, 229);
+  --dark-pink: rgb(210, 80, 189);
+  --blue-color: rgb(138, 198, 221);
+  --dark-blue: rgb(34, 164, 215);
+  --white-color: white;
+  --black-color: #1e293b;
+  --grey-color: #334155;
+  --off-white: #94a3b8;
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: "Comfortaa", cursive;
   font-size: 100%;
+  background-color: var(--bg-color);
 }
-:root {
-  --bg-color-home: rgb(234, 245, 234);
-  --bg-color-form: rgb(250, 246, 230);
-  --pink-color: rgb(235, 199, 229);
-  --blue-color: rgb(138, 198, 221);
-  --white-color: white;
-  --black-color: #1e293b;
-  --off-white: #f1f5f9;
-}
+
 .link {
   text-decoration: none;
   cursor: pointer;
@@ -26,6 +31,9 @@ link:hover {
 .margin-top-bottom-zero {
   margin-top: 0;
   margin-bottom: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
 }
 @media screen and (max-width: 500px) {
   body {

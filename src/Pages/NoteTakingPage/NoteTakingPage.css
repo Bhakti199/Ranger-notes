@@ -1,0 +1,187 @@
+.note-taking-page {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.note-taking-main {
+  margin: 4.2rem 5rem 1rem 22rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 70%;
+  height: 100%;
+}
+.react-quill-cotainer {
+  padding: 1rem;
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: fit-content;
+  border-radius: 1rem;
+  height: fit-content;
+}
+.title-input {
+  padding: 10px 0;
+  width: 98%;
+  border-radius: 0.7rem;
+  border: 1px solid var(--off-white);
+  outline: none;
+  padding-left: 10px;
+}
+.editor-of-note {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  height: auto;
+}
+.ql-toolbar.ql-snow {
+  border: 1px solid var(--off-white) !important;
+}
+.ql-toolbar {
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+  border-radius: 0.7rem;
+}
+.ql-formats {
+  display: flex;
+  flex-direction: column;
+}
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border: 0px;
+}
+.ql-container.ql-container.ql-snow {
+  height: 5rem;
+}
+.ql-editor {
+  box-sizing: border-box;
+  width: 29rem;
+  border: 1px solid var(--off-white);
+  border-radius: 0.7rem;
+}
+.note-taking-footer {
+  display: flex;
+  gap: 1rem;
+}
+.note-taking-footer-partone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.note-taking-footer-parttwo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.select-section {
+  padding: 10px 1.4rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--off-white);
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.label-input {
+  padding: 10px;
+  width: 6rem;
+  border: 1px solid var(--off-white);
+  outline: none;
+  border-radius: 0.5rem;
+}
+.add-note-button,
+.cancel-note-button {
+  box-sizing: border-box;
+  border: none;
+  color: var(--black-color);
+  font-size: 1rem;
+  padding: 9px 1rem;
+  width: 5.3rem;
+  border-radius: 7px;
+  transition: 0.3s;
+}
+.add-note-button {
+  background-color: var(--pink-color);
+}
+.add-note-button:hover {
+  background-color: var(--dark-pink);
+}
+.cancel-note-button {
+  background-color: var(--blue-color);
+}
+.cancel-note-button:hover {
+  background-color: var(--dark-blue);
+}
+/* this line is commented because the bug is not solved yet, I need this fo rfuture use. */
+/* .ql-container {
+  position: static !important;
+}
+.ql-editor.ql-blank::before {
+  position: static !important;
+}
+.ql-snow .ql-picker,
+.ql-snow .ql-picker-label {
+  position: static !important;
+} */
+@media screen and (max-width: 1050px) {
+  .note-taking-main {
+    margin: 5rem 2rem 2rem 2rem;
+    align-items: center;
+  }
+  .editor-of-note {
+    flex-direction: column;
+  }
+  .ql-toolbar {
+    flex-direction: row;
+    width: auto;
+    height: fit-content;
+  }
+  .note-taking-footer {
+    flex-direction: column;
+  }
+  .add-note-button,
+  .cancel-note-button {
+    width: 8rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .react-quill-cotainer {
+    padding: 10px;
+  }
+  .title-input {
+    width: 97%;
+  }
+  .ql-editor.ql-blank,
+  .ql-container.ql-container.ql-snow {
+    height: 8rem;
+  }
+  .ql-editor {
+    width: 21.3rem;
+  }
+  .react-quill-cotainer {
+    height: 100%;
+  }
+  .select-section {
+    padding: 5px 7px;
+  }
+  .input-container {
+    gap: 5px;
+  }
+  .label-input {
+    padding: 5px 0;
+    width: 5.5rem;
+  }
+
+  .note-taking-footer-partone,
+  .note-taking-footer-parttwo {
+    gap: 7px;
+  }
+  .note-taking-main {
+    margin-top: 6rem 0 0 0;
+  }
+}

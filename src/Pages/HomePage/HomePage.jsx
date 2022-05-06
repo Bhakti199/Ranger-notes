@@ -15,7 +15,7 @@ export const HomePage = () => {
             <div className="landing-page-title">
               Create and Manage your notes easily.
             </div>
-            <Link to="/login">
+            <Link to="/note-taking-page">
               <button className="cta-button">Get Started</button>
             </Link>
           </div>
