@@ -57,6 +57,11 @@
     width: 60%;
   }
 }
+@media screen and (max-width: 650px) {
+  .home-page {
+    margin-top: 7.375rem;
+  }
+}
 @media screen and (max-width: 500px) {
   .landing-img {
     width: 100%;

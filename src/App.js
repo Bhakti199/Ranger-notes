@@ -1,22 +1,28 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Navbar, Sidebar } from "../src/Components";
-import { HomePage, LoginPage, NoteTakingPage, SignUpPage } from "./Pages";
+import { Navbar, NavbarMblView, RequiresAuth } from "../src/Components";
+import {
+  ArchivePage,
+  HomePage,
+  LoginPage,
+  NoteTakingPage,
+  SignUpPage,
+  TrashPage,
+} from "./Pages";
 import { useMainContext } from "./Context";
-import { RequiresAuth } from "./Components";
+
 function App() {
   const { openSidebar } = useMainContext();
   const location = useLocation();
   return (
     <div className="App">
-      <Navbar />
-      <div
-        className={`sidebar-container ${
-          openSidebar ? "drawer-open" : "drawer-close"
-        }`}
-      >
-        {location.pathname === "/note-taking-page" && <Sidebar />}
+      <div className="navbar-desktop-view">
+        <Navbar />
       </div>
+      <div className="navbar-mbl-view">
+        <NavbarMblView />
+      </div>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -26,6 +32,23 @@ function App() {
           element={
             <RequiresAuth>
               <NoteTakingPage />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/archives"
+          element={
+            <RequiresAuth>
+              <ArchivePage />
+            </RequiresAuth>
+          }
+        />
+
+        <Route
+          path="/trash"
+          element={
+            <RequiresAuth>
+              <TrashPage />
             </RequiresAuth>
           }
         />

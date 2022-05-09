@@ -1,19 +1,15 @@
-.sidebar-container {
-  position: sticky;
-  top: 5rem;
-  z-index: 2;
+.navbar-desktop-view {
+  display: flex;
 }
-@media screen and (max-width: 1050px) {
-  .sidebar-container {
-    top: 0;
+.navbar-mbl-view {
+  display: none;
+}
+@media screen and (max-width: 650px) {
+  .navbar-desktop-view {
+    display: none;
   }
-  .drawer-close {
-    transform: translateX(-21rem);
-    transition: transform 250ms ease-in-out;
-  }
-  .drawer-open {
-    transform: translateX(0);
-    transition: transform 250ms ease-in-out;
+  .navbar-mbl-view {
+    display: flex;
   }
 }
 .app {

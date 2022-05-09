@@ -1,18 +1,31 @@
 .note-taking-page {
   width: 100vw;
   display: flex;
-  justify-content: center;
-}
-.note-taking-main {
-  margin: 4.2rem 5rem 1rem 22rem;
-  border-radius: 1rem;
-  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  min-height: 100vh;
-  width: 70%;
-  height: 100%;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  padding: 1rem 0;
 }
+.add-note-title {
+  font-size: 1.5rem;
+  background-color: var(--white-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.my-notes-title {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem;
+}
+
 .react-quill-cotainer {
   padding: 1rem;
   background-color: var(--white-color);
@@ -77,7 +90,7 @@
   gap: 5px;
 }
 .select-section {
-  padding: 10px 1.4rem;
+  padding: 10px 1.5rem;
   border-radius: 0.5rem;
   border: 1px solid var(--off-white);
 }
@@ -88,7 +101,7 @@
 }
 .label-input {
   padding: 10px;
-  width: 6rem;
+  width: 7rem;
   border: 1px solid var(--off-white);
   outline: none;
   border-radius: 0.5rem;
@@ -99,7 +112,7 @@
   border: none;
   color: var(--black-color);
   font-size: 1rem;
-  padding: 9px 1rem;
+  padding: 9px 1.2rem;
   width: 5.3rem;
   border-radius: 7px;
   transition: 0.3s;
@@ -115,6 +128,13 @@
 }
 .cancel-note-button:hover {
   background-color: var(--dark-blue);
+}
+.color-palette-container {
+  position: relative;
+}
+.color-palette {
+  position: absolute;
+  top: 3rem;
 }
 /* this line is commented because the bug is not solved yet, I need this fo rfuture use. */
 /* .ql-container {
@@ -148,7 +168,11 @@
     width: 8rem;
   }
 }
-
+@media screen and (max-width: 650px) {
+  .note-taking-page {
+    margin-top: 7.375rem;
+  }
+}
 @media screen and (max-width: 500px) {
   .react-quill-cotainer {
     padding: 10px;
@@ -183,5 +207,8 @@
   }
   .note-taking-main {
     margin-top: 6rem 0 0 0;
+  }
+  .color-palette {
+    right: 5px;
   }
 }

@@ -72,3 +72,8 @@
     height: 85vh;
   }
 }
+@media screen and (max-width: 650px) {
+  .auth-page {
+    margin-top: 7.375rem;
+  }
+}

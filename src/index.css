@@ -1,15 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 :root {
   --bg-color: rgb(234, 245, 234);
+  --bg-color-darker: rgb(192, 235, 192);
   --bg-color-pink: rgb(250, 246, 230);
   --pink-color: rgb(235, 199, 229);
-  --dark-pink: rgb(210, 80, 189);
+  --dark-pink: #f472b6;
   --blue-color: rgb(138, 198, 221);
   --dark-blue: rgb(34, 164, 215);
   --white-color: white;
   --black-color: #1e293b;
   --grey-color: #334155;
   --off-white: #94a3b8;
+  /* color palette colors */
+  --color-one: #ccf782;
+  --color-two: #fcbaba;
+  --color-three: #a2d6ee;
+  --color-four: #bcb8b8;
+  --color-five: #fe8597;
+  --color-six: #c084fc;
+  --color-seven: rgb(255, 191, 129);
+  --color-eight: #86efac;
 }
 
 body {
@@ -32,9 +42,9 @@ link:hover {
   margin-top: 0;
   margin-bottom: 0;
 }
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px;
-}
+} */
 @media screen and (max-width: 500px) {
   body {
     font-size: 80%;
