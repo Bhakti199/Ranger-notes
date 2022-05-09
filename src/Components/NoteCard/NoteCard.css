@@ -1,0 +1,45 @@
+.note-card {
+  position: relative;
+  height: 11rem;
+  width: 19rem;
+  padding: 20px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.note-card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  height: 1.5rem;
+}
+.pin-icon-on-card {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding-left: 5px;
+}
+
+.note-card-content {
+  min-height: 5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+.note-card-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+.date-label-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

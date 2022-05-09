@@ -1,0 +1,40 @@
+.archives-page {
+  margin-top: 4rem;
+  min-height: 80vh;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.archives-notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.archives-title {
+  font-size: 2rem;
+}
+.archives-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.archives-text {
+  font-size: 1rem;
+}
+.add-note {
+  font-size: 1.5rem;
+  background-color: var(--white-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--black-color);
+}
+@media screen and (max-width: 650px) {
+  .archives-page {
+    margin-top: 7.375rem;
+  }
+}

@@ -1,0 +1,15 @@
+.color {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+}
+.color-palette {
+  padding: 15px 0;
+  width: 8rem;
+  gap: 6px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: var(--white-color);
+  z-index: 1;
+}
