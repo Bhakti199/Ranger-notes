@@ -8,6 +8,7 @@ import { BiArchiveIn, BiNote } from "react-icons/bi";
 import { VscTrash } from "react-icons/vsc";
 import { GiNotebook } from "react-icons/gi";
 export const NavbarMblView = () => {
+  const location = useLocation();
   return (
     <div className="navbar-mbl">
       <div className="navbar-mbl-part-one">
@@ -38,10 +39,12 @@ export const NavbarMblView = () => {
             <VscTrash size={25} title="trash" />
           </Link>
         </div>
-        <div className="navbar-mbl-filter">
-          <div>Tags</div>
-          <div>Priority</div>
-        </div>
+        {location.pathname === "/note-taking-page" && (
+          <div className="navbar-mbl-filter">
+            <div>Tags</div>
+            <div>Priority</div>
+          </div>
+        )}
       </div>
     </div>
   );

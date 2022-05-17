@@ -1,12 +1,9 @@
 import React from "react";
 import "./NoteCard.css";
 import { useLocation } from "react-router-dom";
-
 import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
-import { ColorPalette } from "../ColorPalette/ColorPalette";
 import { useMainContext } from "../../Context";
 import { MyNotesIcons } from "../../Components";
-import { TrashPage } from "../../Pages";
 import { TrashNoteIcons } from "../IconsContainerForNoteCard/TrashNoteIcons";
 import { ArchivesNoteIcons } from "../IconsContainerForNoteCard/ArchivesNoteIcons";
 export const NoteCard = (note) => {

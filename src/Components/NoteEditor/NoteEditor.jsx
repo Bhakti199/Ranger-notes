@@ -130,6 +130,7 @@ export const NoteEditor = () => {
             <button
               className="add-note-button"
               onClick={() => {
+                // (noteInput.title === "" || noteInput.content === "" || noteInput.label ===)
                 setNoteInput((prevNote) => ({
                   ...prevNote,
                   date: new Date().toLocaleDateString(),
