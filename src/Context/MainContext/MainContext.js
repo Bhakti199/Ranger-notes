@@ -17,7 +17,13 @@ const MainContextProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [updateNoteState, setUpdateNoteState] = useState(false);
-
+  const [tags, setTags] = useState([
+    "Personal",
+    "Work",
+    "Class",
+    "Team",
+    "Project",
+  ]);
   const [noteInput, setNoteInput] = useState({
     title: "",
     content: "",
@@ -125,6 +131,8 @@ const MainContextProvider = ({ children }) => {
         restoreNoteFromArchives,
         addNoteToTrash,
         EditNote,
+        tags,
+        setTags,
         RestoreNoteFromTrash,
         DeleteNoteFromNotes,
         DeleteNoteFromArchives,

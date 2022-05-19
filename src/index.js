@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { FilterContextProvider, MainContextProvider } from "./Context";
+import { MainContextProvider } from "./Context";
 
 // Call make Server
 makeServer();
@@ -13,9 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <MainContextProvider>
-        <FilterContextProvider>
-          <App />
-        </FilterContextProvider>
+        <App />
       </MainContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

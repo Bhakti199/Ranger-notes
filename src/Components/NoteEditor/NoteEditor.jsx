@@ -59,8 +59,7 @@ export const NoteEditor = () => {
             }
           >
             <option>Personal</option>
-            <option>Work</option>
-            <option>Class</option>
+            <option>Office</option>
             <option>Team</option>
             <option>Project</option>
           </select>
@@ -131,6 +130,7 @@ export const NoteEditor = () => {
             <button
               className="add-note-button"
               onClick={() => {
+                // (noteInput.title === "" || noteInput.content === "" || noteInput.label ===)
                 setNoteInput((prevNote) => ({
                   ...prevNote,
                   date: new Date().toLocaleDateString(),
@@ -141,7 +141,7 @@ export const NoteEditor = () => {
                   content: "",
                   tag: "personal",
                   priority: "low",
-                  label: "",
+                  label: "none",
                   color: "white",
                   date: "",
                 });

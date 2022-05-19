@@ -2,14 +2,15 @@ import "./Navbar.css";
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { BsSearch, BsPerson } from "react-icons/bs";
-import { useMainContext, useFilter } from "../../Context";
+import { useMainContext } from "../../Context";
 import { BiArchiveIn, BiNote } from "react-icons/bi";
 import { VscTrash } from "react-icons/vsc";
 import { GiNotebook } from "react-icons/gi";
+import { DropDownMenu } from "../../Components";
 
 export const Navbar = () => {
   const location = useLocation();
-  const { setFilterByObj, filterByObj, tags, setTags } = useFilter();
+  const { setOpenSidebar, openSidebar, tags, setTags } = useMainContext();
   const [showTags, setShowTags] = useState(false);
   const [showPriority, setShowPriority] = useState(false);
   return (
@@ -23,45 +24,43 @@ export const Navbar = () => {
       </Link>
       {location.pathname === "/note-taking-page" && (
         <>
-          <select
-            onChange={(event) =>
-              setFilterByObj((prevObj) => ({
-                ...prevObj,
-                tag: event.target.value,
-              }))
-            }
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setShowTags((prevState) => !prevState);
+              setShowPriority(false);
+            }}
           >
-            {tags.map((tag, index) => (
-              <option key={index} value={tag}>
-                {tag}
-              </option>
-            ))}
-          </select>
-
-          <select
-            onChange={(event) =>
-              setFilterByObj((prevObj) => ({
-                ...prevObj,
-                priority: event.target.value,
-              }))
-            }
-          >
-            {["All priority", "low", "medium", "high"].map(
-              (priority, index) => (
-                <option key={index}>{priority}</option>
-              )
+            Tags
+            {showTags && (
+              <div className="tag-menu">
+                <DropDownMenu dropDownMenu={tags} />
+              </div>
             )}
-          </select>
+          </div>
+
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setShowPriority((prevState) => !prevState);
+              setShowTags(false);
+            }}
+          >
+            Priority
+            {showPriority && (
+              <div className="tag-menu">
+                <DropDownMenu dropDownMenu={["Low", "Medium", "High"]} />
+              </div>
+            )}
+          </div>
         </>
       )}
-      {location.pathname != "/" &&
-        location.pathname != "/login" &&
-        location.pathname != "/sign-up" && (
-          <div className="search">
-            <BsSearch />
-            <input className="search-input" placeholder="Search" />
-          </div>
-        )}
+      {location.pathname != "/" && (
+        <div className="search">
+          <BsSearch />
+          <input className="search-input" placeholder="Search" />
+        </div>
+      )}
 
       <div className="navbar-icons-container">
         <Link to="/login" className="navbar-icon">
