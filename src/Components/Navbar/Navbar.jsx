@@ -2,15 +2,14 @@ import "./Navbar.css";
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { BsSearch, BsPerson } from "react-icons/bs";
-import { useMainContext } from "../../Context";
+import { useMainContext, useFilter } from "../../Context";
 import { BiArchiveIn, BiNote } from "react-icons/bi";
 import { VscTrash } from "react-icons/vsc";
 import { GiNotebook } from "react-icons/gi";
-import { DropDownMenu } from "../../Components";
 
 export const Navbar = () => {
   const location = useLocation();
-  const { setOpenSidebar, openSidebar, tags, setTags } = useMainContext();
+  const { setFilterByObj, filterByObj, tags, setTags } = useFilter();
   const [showTags, setShowTags] = useState(false);
   const [showPriority, setShowPriority] = useState(false);
   return (
@@ -24,43 +23,45 @@ export const Navbar = () => {
       </Link>
       {location.pathname === "/note-taking-page" && (
         <>
-          <div
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              setShowTags((prevState) => !prevState);
-              setShowPriority(false);
-            }}
+          <select
+            onChange={(event) =>
+              setFilterByObj((prevObj) => ({
+                ...prevObj,
+                tag: event.target.value,
+              }))
+            }
           >
-            Tags
-            {showTags && (
-              <div className="tag-menu">
-                <DropDownMenu dropDownMenu={tags} />
-              </div>
-            )}
-          </div>
+            {tags.map((tag, index) => (
+              <option key={index} value={tag}>
+                {tag}
+              </option>
+            ))}
+          </select>
 
-          <div
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              setShowPriority((prevState) => !prevState);
-              setShowTags(false);
-            }}
+          <select
+            onChange={(event) =>
+              setFilterByObj((prevObj) => ({
+                ...prevObj,
+                priority: event.target.value,
+              }))
+            }
           >
-            Priority
-            {showPriority && (
-              <div className="tag-menu">
-                <DropDownMenu dropDownMenu={["Low", "Medium", "High"]} />
-              </div>
+            {["All priority", "low", "medium", "high"].map(
+              (priority, index) => (
+                <option key={index}>{priority}</option>
+              )
             )}
-          </div>
+          </select>
         </>
       )}
-      {location.pathname != "/" && (
-        <div className="search">
-          <BsSearch />
-          <input className="search-input" placeholder="Search" />
-        </div>
-      )}
+      {location.pathname != "/" &&
+        location.pathname != "/login" &&
+        location.pathname != "/sign-up" && (
+          <div className="search">
+            <BsSearch />
+            <input className="search-input" placeholder="Search" />
+          </div>
+        )}
 
       <div className="navbar-icons-container">
         <Link to="/login" className="navbar-icon">
