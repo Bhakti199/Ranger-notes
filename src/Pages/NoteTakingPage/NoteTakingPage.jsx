@@ -1,9 +1,10 @@
 import React from "react";
 import "./NoteTakingPage.css";
-import { useMainContext } from "../../Context";
+import { useFilter, useMainContext } from "../../Context";
 import { NoteCard, NoteEditor } from "../../Components";
 export const NoteTakingPage = () => {
   const { userInfo } = useMainContext();
+  const { showNotesList } = useFilter();
   const { notes } = userInfo;
   return (
     <>
@@ -15,8 +16,9 @@ export const NoteTakingPage = () => {
         )}
 
         <div className="notes-container">
-          {notes &&
-            notes.map((note) => (
+          {showNotesList &&
+            showNotesList.length > 0 &&
+            showNotesList.map((note) => (
               <div key={note._id}>
                 <NoteCard note={note} />
               </div>

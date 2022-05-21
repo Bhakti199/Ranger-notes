@@ -13,6 +13,7 @@
   padding: 5px 10px;
   border-radius: 10px;
 }
+
 .my-notes-title {
   font-size: 2rem;
   margin-top: 0;
@@ -136,17 +137,7 @@
   position: absolute;
   top: 3rem;
 }
-/* this line is commented because the bug is not solved yet, I need this fo rfuture use. */
-/* .ql-container {
-  position: static !important;
-}
-.ql-editor.ql-blank::before {
-  position: static !important;
-}
-.ql-snow .ql-picker,
-.ql-snow .ql-picker-label {
-  position: static !important;
-} */
+
 @media screen and (max-width: 1050px) {
   .note-taking-main {
     margin: 5rem 2rem 2rem 2rem;
@@ -174,6 +165,9 @@
   }
 }
 @media screen and (max-width: 500px) {
+  .note-taking-page {
+    padding-top: 5rem;
+  }
   .react-quill-cotainer {
     padding: 10px;
   }

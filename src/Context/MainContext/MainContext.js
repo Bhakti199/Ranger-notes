@@ -32,6 +32,11 @@ const MainContextProvider = ({ children }) => {
     label: "",
     color: "white",
     date: "",
+    time: {
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    },
   });
 
   const addNote = async (note) => {

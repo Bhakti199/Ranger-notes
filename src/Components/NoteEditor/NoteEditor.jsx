@@ -5,18 +5,26 @@ import { ColorPalette } from "../../Components";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { modules, formats } from "../Constants";
-import { useMainContext } from "../../Context";
+import { useMainContext, useFilter } from "../../Context";
+
 export const NoteEditor = () => {
+  const [tagInput, setTagInput] = useState("");
+  const { setTags } = useFilter();
+  let currentDate = new Date().toLocaleDateString();
+  let time = new Date(),
+    hours = time.getHours(),
+    minutes = time.getMinutes(),
+    seconds = time.getSeconds();
   const {
     noteInput,
     setNoteInput,
     addNote,
     CancelNoteHandler,
     updateNoteState,
+    setUpdateNoteState,
     EditNote,
   } = useMainContext();
   const [showColorPalette, setShowColorPalette] = useState(false);
-
   return (
     <div
       className="react-quill-cotainer"
@@ -84,12 +92,13 @@ export const NoteEditor = () => {
               className="label-input"
               placeholder="Add Tag"
               value={noteInput.label}
-              onChange={(event) =>
+              onChange={(event) => {
+                setTagInput(event.target.value);
                 setNoteInput((prevNote) => ({
                   ...prevNote,
-                  label: event.target.value,
-                }))
-              }
+                  label: event.target.value != "" && event.target.value,
+                }));
+              }}
             />
           </div>
 
@@ -112,16 +121,26 @@ export const NoteEditor = () => {
             <button
               className="add-note-button"
               onClick={() => {
-                EditNote(noteInput._id, noteInput);
-                setNoteInput({
-                  title: "",
-                  content: "",
-                  tag: "personal",
-                  priority: "low",
-                  label: "none",
-                  color: "white",
-                  date: "",
-                });
+                if (noteInput.title === "" || noteInput.content === "") {
+                  alert("please input title and content");
+                } else {
+                  tagInput != "" &&
+                    setTags((prevTags) => [...prevTags, tagInput]);
+                  EditNote(noteInput._id, {
+                    ...noteInput,
+                    date: currentDate,
+                    label: tagInput,
+                  });
+                  setNoteInput({
+                    title: "",
+                    content: "",
+                    tag: "personal",
+                    priority: "low",
+                    label: "",
+                    color: "white",
+                    date: currentDate,
+                  });
+                }
               }}
             >
               Update
@@ -130,30 +149,46 @@ export const NoteEditor = () => {
             <button
               className="add-note-button"
               onClick={() => {
-                // (noteInput.title === "" || noteInput.content === "" || noteInput.label ===)
-                setNoteInput((prevNote) => ({
-                  ...prevNote,
-                  date: new Date().toLocaleDateString(),
-                }));
-                addNote(noteInput);
-                setNoteInput({
-                  title: "",
-                  content: "",
-                  tag: "personal",
-                  priority: "low",
-                  label: "none",
-                  color: "white",
-                  date: "",
-                });
+                if (noteInput.title === "" || noteInput.content === "") {
+                  alert("please title and content");
+                } else {
+                  tagInput != "" &&
+                    setTags((prevTags) => [...prevTags, tagInput]);
+                  addNote({
+                    ...noteInput,
+                    date: currentDate,
+                    label: tagInput,
+                    time: {
+                      hours,
+                      minutes,
+                      seconds,
+                    },
+                  });
+                  setNoteInput({
+                    title: "",
+                    content: "",
+                    tag: "personal",
+                    priority: "low",
+                    label: "",
+                    color: "white",
+                    date: currentDate,
+                    time: {
+                      hours: 0,
+                      minutes: 0,
+                      seconds: 0,
+                    },
+                  });
+                }
               }}
             >
               Add
             </button>
           )}
-
-          <button className="cancel-note-button" onClick={CancelNoteHandler}>
-            Cancel
-          </button>
+          <div onClick={() => setUpdateNoteState(false)}>
+            <button className="cancel-note-button" onClick={CancelNoteHandler}>
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -12,7 +12,6 @@ export const NoteCard = (note) => {
     setUpdateNoteState,
     setNoteInput,
     addNoteToArchives,
-
     addNoteToTrash,
   } = useMainContext();
   return (
@@ -36,7 +35,8 @@ export const NoteCard = (note) => {
         }}
       ></div>
       <div className="date-label-container">
-        <div>date</div>
+        <div>{note.note.date}</div>
+        <div>{`${note.note.time.hours}:${note.note.time.minutes}:${note.note.time.seconds}`}</div>
         <div>{note.note.priority}</div>
         <div>{note.note.tag}</div>
         <div>{note.note.label}</div>
