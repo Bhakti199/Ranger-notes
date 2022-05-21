@@ -8,8 +8,8 @@
 * React JS -
   - Reducer+Context
   - React Router
-  - 
-## Functionalities (For Now)
+  
+## Functionalities 
 * Rich Text Editor
 * can Change card color
 * [Notes page](https://ranger-notes.netlify.app/note-taking-page)    
