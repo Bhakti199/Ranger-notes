@@ -1,12 +1,9 @@
 import React from "react";
 import "./NoteCard.css";
 import { useLocation } from "react-router-dom";
-
 import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
-import { ColorPalette } from "../ColorPalette/ColorPalette";
 import { useMainContext } from "../../Context";
 import { MyNotesIcons } from "../../Components";
-import { TrashPage } from "../../Pages";
 import { TrashNoteIcons } from "../IconsContainerForNoteCard/TrashNoteIcons";
 import { ArchivesNoteIcons } from "../IconsContainerForNoteCard/ArchivesNoteIcons";
 export const NoteCard = (note) => {
@@ -15,7 +12,6 @@ export const NoteCard = (note) => {
     setUpdateNoteState,
     setNoteInput,
     addNoteToArchives,
-
     addNoteToTrash,
   } = useMainContext();
   return (
@@ -39,7 +35,8 @@ export const NoteCard = (note) => {
         }}
       ></div>
       <div className="date-label-container">
-        <div>date</div>
+        <div>{note.note.date}</div>
+        <div>{`${note.note.time.hours}:${note.note.time.minutes}:${note.note.time.seconds}`}</div>
         <div>{note.note.priority}</div>
         <div>{note.note.tag}</div>
         <div>{note.note.label}</div>

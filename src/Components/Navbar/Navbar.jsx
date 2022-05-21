@@ -2,16 +2,15 @@ import "./Navbar.css";
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { BsSearch, BsPerson } from "react-icons/bs";
-import { useMainContext } from "../../Context";
+import { useMainContext, useFilter } from "../../Context";
 import { BiArchiveIn, BiNote } from "react-icons/bi";
 import { VscTrash } from "react-icons/vsc";
 import { GiNotebook } from "react-icons/gi";
-import { DropDownMenu } from "../../Components";
+
 export const Navbar = () => {
   const location = useLocation();
-  const { setOpenSidebar, openSidebar, tags, setTags } = useMainContext();
-  const [showTags, setShowTags] = useState(false);
-  const [showPriority, setShowPriority] = useState(false);
+  const { setFilterByObj, filterByObj, tags, setTags } = useFilter();
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -21,29 +20,52 @@ export const Navbar = () => {
           alt="icon"
         />
       </Link>
+      {location.pathname === "/note-taking-page" && (
+        <>
+          <select
+            className="filter-select"
+            onChange={(event) =>
+              setFilterByObj((prevObj) => ({
+                ...prevObj,
+                tag: event.target.value,
+              }))
+            }
+          >
+            {tags.map((tag, index) => (
+              <option key={index}>{tag}</option>
+            ))}
+          </select>
 
-      <div onMouseEnter={() => setShowTags(true)}>
-        Tags
-        {showTags && (
-          <div onMouseLeave={() => setShowTags(false)}>
-            <DropDownMenu dropDownMenu={tags} />
-          </div>
-        )}
-      </div>
+          <select
+            className="filter-select"
+            onChange={(event) =>
+              setFilterByObj((prevObj) => ({
+                ...prevObj,
+                priority: event.target.value,
+              }))
+            }
+          >
+            <option>All priority</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
 
-      <div onMouseEnter={() => setShowPriority(true)}>
-        Priority
-        {showPriority && (
-          <div onMouseLeave={() => setShowPriority(false)}>
-            <DropDownMenu dropDownMenu={["Low", "Medium", "High"]} />
-          </div>
-        )}
-      </div>
+          <select
+            className="filter-select"
+            onChange={(event) =>
+              setFilterByObj((prevObj) => ({
+                ...prevObj,
+                sortBy: event.target.value,
+              }))
+            }
+          >
+            <option>Oldest</option>
+            <option>Latest</option>
+          </select>
+        </>
+      )}
 
-      <div className="search">
-        <BsSearch />
-        <input className="search-input" placeholder="Search" />
-      </div>
       <div className="navbar-icons-container">
         <Link to="/login" className="navbar-icon">
           <BsPerson size={25} title="login" />

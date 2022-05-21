@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 .navbar-icon {
   color: var(--grey-color);
@@ -47,7 +48,14 @@
   border: none;
   outline: none;
 }
-
+.tag-menu {
+  position: absolute;
+  top: 3rem;
+}
+.filter-select {
+  border: none;
+  outline: none;
+}
 @media screen and (max-width: 1050px) {
   .navbar {
     padding: 1rem;

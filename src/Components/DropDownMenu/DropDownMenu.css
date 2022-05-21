@@ -1,4 +1,8 @@
 .drop-down-menu {
-  background-color: aqua;
-  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--white-color);
+  padding: 2rem;
+  z-index: 2;
 }

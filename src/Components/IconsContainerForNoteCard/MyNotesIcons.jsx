@@ -20,6 +20,7 @@ export const MyNotesIcons = ({ note }) => {
       >
         Delete
       </button>
+
       <MdEdit
         size={22}
         onClick={() => {
