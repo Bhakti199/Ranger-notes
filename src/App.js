@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import { Navbar, NavbarMblView, RequiresAuth } from "../src/Components";
 import {
   ArchivePage,
@@ -53,6 +54,10 @@ function App() {
           }
         />
       </Routes>
+      <Toaster
+        position="top-center"
+        toastOptions={{ className: "toast", duration: 3000 }}
+      />
     </div>
   );
 }

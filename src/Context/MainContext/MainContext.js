@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-hot-toast";
 import {
   addNoteCall,
   addNoteToArchieveCall,
@@ -43,6 +44,7 @@ const MainContextProvider = ({ children }) => {
     const { notes, status } = await addNoteCall(note);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes }));
+      toast("Note added successfully");
     }
   };
 
@@ -53,6 +55,7 @@ const MainContextProvider = ({ children }) => {
     );
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes, archives }));
+      toast("Note moved to archives successfully.");
     }
   };
 
@@ -62,6 +65,7 @@ const MainContextProvider = ({ children }) => {
     );
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes, archives }));
+      toast("Note restored successfully.");
     }
   };
 
@@ -69,6 +73,7 @@ const MainContextProvider = ({ children }) => {
     const { notes, trash, status } = await addNoteToTrashCall(noteId);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes, trash }));
+      toast("Note moved to trash successfully.");
     }
   };
 
@@ -76,6 +81,7 @@ const MainContextProvider = ({ children }) => {
     const { notes, status } = await EditNoteCall(noteId, note);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes }));
+      toast("Note updated successfully");
     }
   };
 
@@ -83,6 +89,7 @@ const MainContextProvider = ({ children }) => {
     const { notes, trash, status } = await RestoreNoteFromTrashCall(noteId);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes, trash }));
+      toast("Note restored successfully.");
     }
   };
 
@@ -90,6 +97,7 @@ const MainContextProvider = ({ children }) => {
     const { notes, status } = await DeleteNoteFromNotesCall(noteId);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes }));
+      toast("Note deleted successfully");
     }
   };
 
@@ -97,6 +105,7 @@ const MainContextProvider = ({ children }) => {
     const { archives, status } = await DeleteNoteFromArchivesCall(noteId);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, archives }));
+      toast("Note deleted successfully");
     }
   };
 
@@ -104,6 +113,7 @@ const MainContextProvider = ({ children }) => {
     const { trash, status } = await DeleteNoteFromTrashCall(noteId);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, trash }));
+      toast("Note deleted successfully");
     }
   };
   const CancelNoteHandler = () => {

@@ -7,7 +7,6 @@ export const signUpCall = async (email, password, firstName, lastName) => {
       firstName,
       lastName,
     });
-    console.log(data, status);
     return { data, status };
   } catch (error) {
     console.error(error);
