@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import "../../Pages/NoteTakingPage/NoteTakingPage.css";
 import { IoIosColorPalette } from "react-icons/io";
 import { ColorPalette } from "../../Components";
@@ -150,7 +151,7 @@ export const NoteEditor = () => {
               className="add-note-button"
               onClick={() => {
                 if (noteInput.title === "" || noteInput.content === "") {
-                  alert("please title and content");
+                  toast("please Enter title and content");
                 } else {
                   tagInput != "" &&
                     setTags((prevTags) => [...prevTags, tagInput]);

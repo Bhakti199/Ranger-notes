@@ -15,3 +15,7 @@
 .app {
   background-color: var(--bg-color);
 }
+div .toast {
+  width: 20rem;
+  background-color: var(--bg-color-pink);
+}
