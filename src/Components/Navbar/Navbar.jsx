@@ -9,6 +9,7 @@ import { GiNotebook } from "react-icons/gi";
 
 export const Navbar = () => {
   const location = useLocation();
+  const { isUserLoggedIn, setIsUserLoggedIn } = useMainContext();
   const { setFilterByObj, filterByObj, tags, setTags } = useFilter();
 
   return (
@@ -67,7 +68,10 @@ export const Navbar = () => {
       )}
 
       <div className="navbar-icons-container">
-        <Link to="/login" className="navbar-icon">
+        <Link
+          to={`${isUserLoggedIn ? "/profile" : "/login"}`}
+          className="navbar-icon"
+        >
           <BsPerson size={25} title="login" />
         </Link>
         <Link to="/note-taking-page" className="navbar-icon">

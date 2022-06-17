@@ -33,6 +33,11 @@
   text-decoration: none;
   color: var(--black-color);
 }
+.trash-notes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 @media screen and (max-width: 650px) {
   .archives-page {
     margin-top: 7.375rem;
