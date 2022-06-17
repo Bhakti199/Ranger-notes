@@ -11,6 +11,7 @@ import {
   TrashPage,
 } from "./Pages";
 import { useMainContext } from "./Context";
+import { ProfilePage } from "./Pages/ProfilePage/ProfilePage";
 
 function App() {
   const { openSidebar } = useMainContext();
@@ -50,6 +51,15 @@ function App() {
           element={
             <RequiresAuth>
               <TrashPage />
+            </RequiresAuth>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <RequiresAuth>
+              <ProfilePage />
             </RequiresAuth>
           }
         />

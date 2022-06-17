@@ -29,19 +29,7 @@ export const LoginPage = () => {
   };
   return (
     <>
-      {isUserLoggedIn ? (
-        <div className="user-profile">
-          <div>User Profile page will be here.</div>
-          <button
-            onClick={() => {
-              setIsUserLoggedIn(false);
-              localStorage.removeItem("userLoginToken");
-            }}
-          >
-            logout
-          </button>
-        </div>
-      ) : (
+      {!isUserLoggedIn && (
         <div className="auth-page">
           <form
             className="login-form"
@@ -78,9 +66,7 @@ export const LoginPage = () => {
           </form>
           <span
             className="login-guest"
-            onClick={() =>
-              guestLoginHandler("adarshbalika@gmail.com", "adarshBalika123")
-            }
+            onClick={() => guestLoginHandler("nancy@gmail.com", "nancy123")}
           >
             Log in as a guest.
           </span>

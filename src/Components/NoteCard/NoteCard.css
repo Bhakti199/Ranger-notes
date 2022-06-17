@@ -17,6 +17,7 @@
   height: 1.5rem;
 }
 .pin-icon-on-card {
+  cursor: pointer;
   position: absolute;
   right: 15px;
   top: 15px;
@@ -37,6 +38,11 @@
   gap: 1rem;
   justify-content: flex-end;
   align-items: center;
+}
+.priority-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 .date-label-container {
   display: flex;

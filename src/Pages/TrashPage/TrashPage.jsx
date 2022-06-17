@@ -9,6 +9,7 @@ export const TrashPage = () => {
   return (
     <div className="archives-page">
       <div className="archives-title">Trash</div>
+
       {trash && trash.length === 0 && (
         <div className="archives-content">
           <div className="archives-text">No notes in Trash</div>
@@ -17,13 +18,15 @@ export const TrashPage = () => {
           </Link>
         </div>
       )}
-      {trash &&
-        trash.length > 0 &&
-        trash.map((note, index) => (
-          <div key={index}>
-            <NoteCard note={note} />
-          </div>
-        ))}
+      <div className="trash-notes">
+        {trash &&
+          trash.length > 0 &&
+          trash.map((note, index) => (
+            <div key={index}>
+              <NoteCard note={note} />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

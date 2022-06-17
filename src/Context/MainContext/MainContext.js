@@ -18,6 +18,7 @@ const MainContextProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [updateNoteState, setUpdateNoteState] = useState(false);
+  const [pinnedNotes, setPinnedNotes] = useState([]);
   const [tags, setTags] = useState([
     "Personal",
     "Work",
@@ -44,7 +45,6 @@ const MainContextProvider = ({ children }) => {
     const { notes, status } = await addNoteCall(note);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes }));
-      toast("Note added successfully");
     }
   };
 
@@ -97,7 +97,7 @@ const MainContextProvider = ({ children }) => {
     const { notes, status } = await DeleteNoteFromNotesCall(noteId);
     if (status === 200 || status === 201) {
       setUserInfo((prevUser) => ({ ...prevUser, notes }));
-      toast("Note deleted successfully");
+      toast("Note pinned successfully");
     }
   };
 
@@ -127,6 +127,13 @@ const MainContextProvider = ({ children }) => {
       date: "",
     });
   };
+  const removePinnedNote = (note) => {
+    let tempPinnedNotes = pinnedNotes.filter(
+      (pinnedNote) => pinnedNote._id != note._id
+    );
+    setPinnedNotes([...tempPinnedNotes]);
+    addNote(note);
+  };
   return (
     <MainContext.Provider
       value={{
@@ -152,6 +159,9 @@ const MainContextProvider = ({ children }) => {
         DeleteNoteFromNotes,
         DeleteNoteFromArchives,
         DeleteNoteFromTrash,
+        pinnedNotes,
+        setPinnedNotes,
+        removePinnedNote,
       }}
     >
       {children}
